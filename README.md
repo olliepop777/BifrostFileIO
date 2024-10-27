@@ -1,8 +1,8 @@
-# BifrostJSON
+# BifrostFileIO
 
-BifrostJSON is a library for interfacing with JSON data inside the Bifrost graph visual programming interface for Autodesk Maya. It allows for translating JSON data into the corresponding Bifrost types.
+BifrostFileIO is a library for interfacing with the filesystem inside the Bifrost graph visual programming interface for Autodesk Maya. For some supported file types, it allows for translating the file data into the corresponding Bifrost types.
 
-Usage video: https://youtu.be/xj2GzIATwXg
+JSON usage video: https://youtu.be/xj2GzIATwXg
 
 ## Features
 * Read JSON data from a file on disk or an Amino String input
@@ -11,12 +11,12 @@ Usage video: https://youtu.be/xj2GzIATwXg
 * Output data as a JSON string for consumption in Maya
 
 ## Installation
-* Head to the [Releases page](https://github.com/olliepop777/BifrostJSON/releases) and download the version built for your platform (Windows, Linux, etc.) and Bifrost version.
-* Edit your `BIFROST_LIB_CONFIG_FILES` environment variable to point to the configuration file located in `<BifrostJSON_vX.X.X_PLATFORM_bifX.X.X.X>/BifrostJSON-<version_number>/BifrostJSONPackConfig.json`.
+* Head to the [Releases page](https://github.com/olliepop777/BifrostFileIO/releases) and download the version built for your platform (Windows, Linux, etc.) and Bifrost version.
+* Edit your `BIFROST_LIB_CONFIG_FILES` environment variable to point to the configuration file located in `<BifrostFileIO_vX.X.X_PLATFORM_bifX.X.X.X>/BifrostFileIO-<version_number>/BifrostFileIOPackConfig.json`.
 
   For example, on MacOS: 
   ```
-  BIFROST_LIB_CONFIG_FILES = /path/to/BifrostJSON_v1.0.0_PLATFORM_bif2.7.1.1/BifrostJSON-1.0.0/BifrostJSONPackConfig.json
+  BIFROST_LIB_CONFIG_FILES = /path/to/BifrostFileIO_v1.0.0_PLATFORM_bif2.7.1.1/BifrostFileIO-1.0.0/BifrostFileIOPackConfig.json
   ```
 
   Make sure you add the right delimiter for your platform if adding multiple configuration files, i.e `:` (colon), `;` (semi-colon), etc.
@@ -93,6 +93,6 @@ The public Bifrost SDK was first released with Bifrost 2.5, therefore Bifrost 2.
 3. Install `cmake` via your distro's package manager. On AlmaLinux: `sudo dnf install cmake`
 
 # Third Paty Credits
-Internally BifrostJSON uses the `nlohmann::json` library: https://github.com/nlohmann/json
+Internally BifrostFileIO uses the `nlohmann::json` library: https://github.com/nlohmann/json
 
 The header is included in the project sources for convenient self compilation.

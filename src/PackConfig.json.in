@@ -1,7 +1,7 @@
 {
     "AminoConfigurations": [
         {
-            "vendorName": "BifrostJSON",
+            "vendorName": "BifrostFileIO",
             "libraryVersion": "${CONFIG_PACK_VERSION}",
             "libraryName": "${PROJECT_NAME}",
             "sharedLibs": [

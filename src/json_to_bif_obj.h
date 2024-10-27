@@ -17,7 +17,7 @@ using json = nlohmann::json;
 #include <Bifrost/Object/Object.h>
 
 // This package includes
-#include "bifrost_json_runtime_exception.h"
+#include "bifrost_file_io_runtime_exception.h"
 
 struct ReadSettings {
     bool output_a_bifrost_object;

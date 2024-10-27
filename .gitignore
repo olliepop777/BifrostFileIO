@@ -6,7 +6,7 @@
 __pycache__
 
 # Project files
-BifrostJSON_v*/
+BifrostFileIO_v*/
 build_output/
 
 # Visual Studio / Visual Studio Code

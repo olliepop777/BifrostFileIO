@@ -11,7 +11,7 @@
     "types": [],
     "compounds": [
         {
-            "name": "BifrostJSON::set_with_access_expr",
+            "name": "BifrostFileIO::JSON::set_with_access_expr",
             "uriImported": "stream:/bifrostGraphShape1",
             "metadata": [
                 {
@@ -122,12 +122,12 @@
                 {
                     "metaName": "_recentNode_",
                     "metaType": "string",
-                    "metaValue": "BifrostGraph,BifrostJSON,get_with_access_expr"
+                    "metaValue": "BifrostGraph,BifrostFileIO::JSON,get_with_access_expr"
                 },
                 {
                     "metaName": "_recentNode_",
                     "metaType": "string",
-                    "metaValue": "BifrostGraph,BifrostJSON,read_json"
+                    "metaValue": "BifrostGraph,BifrostFileIO::JSON,read_json"
                 },
                 {
                     "metaName": "_recentNode_",
@@ -6761,12 +6761,12 @@
                         {
                             "metaName": "_recentNode_",
                             "metaType": "string",
-                            "metaValue": "BifrostGraph,BifrostJSON,get_with_access_expr"
+                            "metaValue": "BifrostGraph,BifrostFileIO::JSON,get_with_access_expr"
                         },
                         {
                             "metaName": "_recentNode_",
                             "metaType": "string",
-                            "metaValue": "BifrostGraph,BifrostJSON,read_json"
+                            "metaValue": "BifrostGraph,BifrostFileIO::JSON,read_json"
                         },
                         {
                             "metaName": "ViewportRect",
@@ -6906,7 +6906,7 @@
                                 {
                                     "metaName": "_recentNode_",
                                     "metaType": "string",
-                                    "metaValue": "BifrostGraph,BifrostJSON,set_array_chaining_info"
+                                    "metaValue": "BifrostGraph,BifrostFileIO::JSON,set_array_chaining_info"
                                 },
                                 {
                                     "metaName": "_recentNode_",
@@ -6964,7 +6964,7 @@
                             "compoundNodes": [
                                 {
                                     "nodeName": "get_property_access_tokens",
-                                    "nodeType": "BifrostJSON::get_property_access_tokens",
+                                    "nodeType": "BifrostFileIO::JSON::get_property_access_tokens",
                                     "metadata": [
                                         {
                                             "metaName": "DisplayMode",
@@ -7012,7 +7012,7 @@
                                 },
                                 {
                                     "nodeName": "set_array_chaining_info",
-                                    "nodeType": "BifrostJSON::set_array_chaining_info",
+                                    "nodeType": "BifrostFileIO::JSON::set_array_chaining_info",
                                     "metadata": [
                                         {
                                             "metaName": "DisplayMode",
@@ -7094,7 +7094,7 @@
                     "compoundNodes": [
                         {
                             "nodeName": "get_with_access_expr_internal_object",
-                            "nodeType": "BifrostJSON::get_with_access_expr_internal",
+                            "nodeType": "BifrostFileIO::JSON::get_with_access_expr_internal",
                             "metadata": [
                                 {
                                     "metaName": "DisplayMode",
@@ -7318,7 +7318,7 @@
                         },
                         {
                             "nodeName": "get_with_access_expr_internal_array",
-                            "nodeType": "BifrostJSON::get_with_access_expr_internal",
+                            "nodeType": "BifrostFileIO::JSON::get_with_access_expr_internal",
                             "metadata": [
                                 {
                                     "metaName": "DisplayMode",

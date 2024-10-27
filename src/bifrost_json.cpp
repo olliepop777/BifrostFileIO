@@ -1,6 +1,6 @@
 #include "bifrost_json.h"
 
-void BifrostJSON::read_json(Amino::String json_file,
+void BifrostFileIO::JSON::read_json(Amino::String json_file,
     Amino::String json_str,
     bool output_a_bifrost_object,
     bool output_a_json_str,
@@ -71,13 +71,13 @@ void BifrostJSON::read_json(Amino::String json_file,
     try {
         create_json_to_bif_obj(json_data, out_json_obj, settings);
         create_json_to_amino_str(json_data, json_str, out_json_str, settings);
-    } catch (const BifrostJsonRuntimeException& e) {
+    } catch (const BifrostFileIORuntimeException& e) {
         success = false;
         msg_if_failed = e.what();
     }
 }
 
-void BifrostJSON::get_property_access_tokens(Amino::String access_expr,
+void BifrostFileIO::JSON::get_property_access_tokens(Amino::String access_expr,
     Amino::MutablePtr<Amino::Array<Amino::Ptr<Bifrost::Object>>>& token_arr,
     bool& success,
     Amino::String& msg_if_failed)

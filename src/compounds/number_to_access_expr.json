@@ -11,7 +11,7 @@
     "types": [],
     "compounds": [
         {
-            "name": "BifrostJSON::number_to_access_expr",
+            "name": "BifrostFileIO::JSON::number_to_access_expr",
             "uriImported": "stream:/bifrostGraphShape1",
             "metadata": [
                 {

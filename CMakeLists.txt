@@ -10,8 +10,8 @@ if( NOT BIFROST_LOCATION )
     endif()
 endif()
 
-if( NOT BIFROST_JSON_RELEASE_VERSION )
-    set( BIFROST_JSON_RELEASE_VERSION 1.0.0)
+if( NOT BIFROST_FILE_IO_RELEASE_VERSION )
+    set( BIFROST_FILE_IO_RELEASE_VERSION 1.0.0)
 endif()
 
 # The INPUTS arg was deprecated in Bifrost 2.8. Will not compile without updating
@@ -26,12 +26,12 @@ endif()
 set(CMAKE_CXX_STANDARD 17)
 # Project Name
 project(
-    BifrostJSON 
-    VERSION ${BIFROST_JSON_RELEASE_VERSION}
+    BifrostFileIO 
+    VERSION ${BIFROST_FILE_IO_RELEASE_VERSION}
     LANGUAGES CXX
 )
 
-set(BIFROST_JSON_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME}-${PROJECT_VERSION}")
+set(BIFROST_FILE_IO_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME}-${PROJECT_VERSION}")
 
 # Bifrost setup and utilities...
 include(${BIFROST_LOCATION}/sdk/cmake/setup.cmake)

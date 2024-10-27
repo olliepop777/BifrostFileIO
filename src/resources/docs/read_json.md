@@ -33,7 +33,7 @@ Whether to output the parsed JSON as a Bifrost String at the output port `out_js
 
 ### `null_to_string`
 
-JSON has a datatype called `null` which is not native to Bifrost. By default a `null` JSON value will be converted to the boolean `false` in Bifrost. If this parameter is enabled then `null` will be converted to the Bifrost String `"null"`
+JSON has a datatype called `null` which is not native to Bifrost. By default a `null` JSON value will be converted to the boolean `false` in Bifrost. If this parameter is enabled then `null` will be converted to the Bifrost String `"null"`. This is useful if you want to distinguish when the value was actually `null` in the JSON.
 
 ### `force_any_arrays`
 

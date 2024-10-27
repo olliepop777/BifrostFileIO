@@ -11,7 +11,7 @@
     "types": [],
     "compounds": [
         {
-            "name": "BifrostJSON::set_array_chaining_info",
+            "name": "BifrostFileIO::JSON::set_array_chaining_info",
             "uriImported": "stream:/bifrostGraphShape1",
             "metadata": [
                 {

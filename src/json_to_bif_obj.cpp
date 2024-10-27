@@ -81,7 +81,7 @@ void set_primitive_key_value(json::iterator& iter,
         }
         break;
     default:
-        throw BifrostJsonRuntimeException("JSON primitive type detected incorrectly.");
+        throw BifrostFileIORuntimeException("JSON primitive type detected incorrectly.");
         break;
     }
 }
@@ -115,7 +115,7 @@ Amino::Any get_base_arr_any_value(json::iterator& iter, ReadSettings& settings)
         return_val = std::move(get_iter_val<Amino::Ptr<Bifrost::Object>>(iter, settings));
         break;
     default:
-        throw BifrostJsonRuntimeException("JSON primitive type detected incorrectly.");
+        throw BifrostFileIORuntimeException("JSON primitive type detected incorrectly.");
         break;
     }
 
@@ -247,7 +247,7 @@ void handle_homogenous_nested_array_limited_depth(
             json_data, bif_obj, amino_key, json_size, settings);
         break;
     default:
-        throw BifrostJsonRuntimeException("JSON array type detected incorrectly.");
+        throw BifrostFileIORuntimeException("JSON array type detected incorrectly.");
         break;
     }
 }
@@ -366,7 +366,7 @@ void recursive_create_amino_array(json& json_data,
     default:
         // This function should never be called if the depth was not one of the
         // predetermined values
-        throw BifrostJsonRuntimeException(
+        throw BifrostFileIORuntimeException(
             "ArrayTypeInfo computed incorrectly, unknown case for depth count.");
         break;
     }
@@ -387,7 +387,7 @@ Amino::MutablePtr<Bifrost::Object> recursive_create_bif_obj(json& json_data, Rea
             Amino::String amino_key = Amino::String(iter.key().c_str());
             recursive_create_amino_array(*iter, bif_obj, amino_key, iter->size(), settings);
         } else {
-            throw BifrostJsonRuntimeException(
+            throw BifrostFileIORuntimeException(
                 "Unexpected call to object parser. Cannot create Bifrost Object");
         }
     }
@@ -415,7 +415,7 @@ void create_json_to_bif_obj(json& json_data,
         recursive_create_amino_array(json_data, root_bif_obj, json_data_key,
             json_data.size(), settings);
     } else {
-        throw BifrostJsonRuntimeException(
+        throw BifrostFileIORuntimeException(
             "Unexpected initial JSON type. Cannot parse to Bifrost Object.");
     }
 }

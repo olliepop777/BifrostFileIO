@@ -11,7 +11,7 @@
     "types": [],
     "compounds": [
         {
-            "name": "BifrostJSON::read_json_cached",
+            "name": "BifrostFileIO::JSON::read_json_cached",
             "uriImported": "stream:/bifrostGraphShape1",
             "metadata": [
                 {
@@ -161,7 +161,7 @@
                 {
                     "metaName": "_recentNode_",
                     "metaType": "string",
-                    "metaValue": "BifrostGraph,BifrostJSON,read_json"
+                    "metaValue": "BifrostGraph,BifrostFileIO::JSON,read_json"
                 },
                 {
                     "metaName": "_recentNode_",
@@ -2164,7 +2164,7 @@
             "compoundNodes": [
                 {
                     "nodeName": "read_json",
-                    "nodeType": "BifrostJSON::read_json",
+                    "nodeType": "BifrostFileIO::JSON::read_json",
                     "metadata": [
                         {
                             "metaName": "DisplayMode",

@@ -8,7 +8,7 @@ import argparse
 # Basic Usage: python3 build.py
 # Help: python3 build.py --help
 
-BIFROST_JSON_VERSION = "1.1.0"
+BIFROST_FILE_IO_VERSION = "1.2.0"
 
 PLATFORM_INFO = {
     "Windows": {
@@ -81,7 +81,7 @@ def build_with_cmake(bifrost_install_path, platform_name, is_release, is_fresh_b
         "cmake", "-S", ".",
         "-B", CMAKE_BUILD_DIR,
         "-DBIFROST_LOCATION={}".format(bifrost_install_path),
-        "-DBIFROST_JSON_RELEASE_VERSION={}".format(BIFROST_JSON_VERSION),
+        "-DBIFROST_FILE_IO_RELEASE_VERSION={}".format(BIFROST_FILE_IO_VERSION),
         "-DCMAKE_BUILD_TYPE=Release"
     ]
 
@@ -151,8 +151,8 @@ def generate_release_data(platform_name, bifrost_install_path):
         )
 
     return {
-        "release_name": "BifrostJSON_v{}_{}_bif{}".format(
-            BIFROST_JSON_VERSION,
+        "release_name": "BifrostFileIO_v{}_{}_bif{}".format(
+            BIFROST_FILE_IO_VERSION,
             PLATFORM_INFO[platform_name]["nice_platform_name"],
             bif_install_version
         ),
@@ -241,7 +241,7 @@ def main(args):
     build_with_cmake(bifrost_install_path, platform_name, is_release, is_fresh_build)
 
 def setup_args():
-    parser = argparse.ArgumentParser(description="Build the BifrostJSON operators and helpers")
+    parser = argparse.ArgumentParser(description="Build the BifrostFileIO operators and helpers")
     parser.add_argument("-r", "--release", action="store_true", help="If specified, builds for public release")
     parser.add_argument("-bp", "--bifrost-path", help="Specify an alternate path for the Bifrost install")
     parser.add_argument("-f", "--fresh-build", action="store_true", help="Remove old build directories if they exist")

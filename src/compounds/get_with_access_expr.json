@@ -11,7 +11,7 @@
     "types": [],
     "compounds": [
         {
-            "name": "BifrostJSON::get_with_access_expr",
+            "name": "BifrostFileIO::JSON::get_with_access_expr",
             "uriImported": "stream:/bifrostGraphShape1",
             "metadata": [
                 {
@@ -122,7 +122,7 @@
                 {
                     "metaName": "_recentNode_",
                     "metaType": "string",
-                    "metaValue": "BifrostGraph,BifrostJSON,get_with_access_expr_internal"
+                    "metaValue": "BifrostGraph,BifrostFileIO::JSON,get_with_access_expr_internal"
                 },
                 {
                     "metaName": "_recentNode_",
@@ -132,7 +132,7 @@
                 {
                     "metaName": "_recentNode_",
                     "metaType": "string",
-                    "metaValue": "BifrostGraph,BifrostJSON,read_json"
+                    "metaValue": "BifrostGraph,BifrostFileIO::JSON,read_json"
                 },
                 {
                     "metaName": "_recentNode_",
@@ -198,7 +198,7 @@
             "compoundNodes": [
                 {
                     "nodeName": "get_with_access_expr_internal",
-                    "nodeType": "BifrostJSON::get_with_access_expr_internal",
+                    "nodeType": "BifrostFileIO::JSON::get_with_access_expr_internal",
                     "metadata": [
                         {
                             "metaName": "DisplayMode",
