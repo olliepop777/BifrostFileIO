@@ -6,9 +6,9 @@ JSON usage video: https://youtu.be/xj2GzIATwXg
 
 ## Features
 * Read JSON data from a file on disk or an Amino String input
+* Read any text-based file from the filesystem into Amino Strings
 * Helper nodes to get and set data inside the Bifrost graph via expression, instead of chaining together many get/set nodes in arrays/Objects
 * Printing input data to console for debugging
-* Output data as a JSON string for consumption in Maya
 
 ## Installation
 * Head to the [Releases page](https://github.com/olliepop777/BifrostFileIO/releases) and download the version built for your platform (Windows, Linux, etc.) and Bifrost version.
@@ -16,14 +16,14 @@ JSON usage video: https://youtu.be/xj2GzIATwXg
 
   For example, on MacOS: 
   ```
-  BIFROST_LIB_CONFIG_FILES = /path/to/BifrostFileIO_v1.0.0_PLATFORM_bif2.7.1.1/BifrostFileIO-1.0.0/BifrostFileIOPackConfig.json
+  BIFROST_LIB_CONFIG_FILES = /path/to/BifrostFileIO_v1.0.0_macOS_bif2.7.1.1/BifrostFileIO-1.0.0/BifrostFileIOPackConfig.json
   ```
 
   Make sure you add the right delimiter for your platform if adding multiple configuration files, i.e `:` (colon), `;` (semi-colon), etc.
 
 * Note that you must use the `BIFROST_LIB_CONFIG_FILES` ENV to install the operator. For compiled operators this is required, unlike other compounds where it is enough to drop files into the Autodesk directory located in the platform's home directory
 
-## Usage
+## Usage: JSON
 
 ### Reading JSON
 Use the core `read_json` node to read JSON. Input JSON can either come from a file, via the `json_file` input, or a JSON string via the `json_str` input. By default a Bifrost Object is outputted. Optionally, a JSON string can be outputted as well via the `output_a_json_str` port. Consult the node documentation in the Bifrost Graph Editor for more detailed explanations.
@@ -46,6 +46,12 @@ would retrieve the key `json_data`, the 9th index in the array of people, the `f
 
 ### Setting Data
 Similar to the `get_with_access_expr` node, the `set_with_access_expr` node will set the data at the specified expression, and return the modified data in the `out_obj_or_array` port.
+
+## Usage: Text-based files
+
+### Read text files
+
+Any file in the filesystem can be read, but the node is designed for reading text-based files encoded in UTF-8 (or ASCII). The lines of the file will be read into an array of Amino Strings (the native Bifrost string class). Each line from the file will be an item in the array. Set the `utf8_only` port to false if you wish to read all file types, despite if the data doesn't make sense to be interpreted as UTF-8 text (for example, an image file will not produce any meaningful results).
 
 ## Building the operator
 You may wish to build the operator for newer/older versions of Maya/Bifrost that are not provided. The goal is to have pre-built releases for the latest Bifrost version, but they may not be ready promptly.

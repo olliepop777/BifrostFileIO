@@ -6,7 +6,6 @@ void BifrostFileIO::Filesystem::read_from_filesystem(Amino::String file_path,
     Amino::MutablePtr<Amino::Array<Amino::String>>& read_lines,
     bool& success,
     Amino::String& msg_if_failed)
-    BIFROST_FILE_IO_SET_NODE_METADATA("read_from_filesystem", "json_logo.svg", "false")
 {
 
     read_lines = Amino::newMutablePtr<Amino::Array<Amino::String>>(0);
