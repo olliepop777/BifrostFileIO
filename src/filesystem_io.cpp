@@ -7,6 +7,11 @@ void read_file_to_arr_amino_str(const Amino::String amino_file_path,
     bool& success,
     Amino::String& msg_if_failed)
 {
+    if (amino_file_path.empty()) {
+        success = false;
+        msg_if_failed = "file_path is empty";
+        return;
+    }
 
     Amino::String debug_msg("");
     if (debug) {
