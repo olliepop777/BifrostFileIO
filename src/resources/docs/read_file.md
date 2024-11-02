@@ -1,4 +1,4 @@
-# `read_from_filesystem`
+# `read_file`
 
 Read a file into an array of `Amino::String`. Each line of the file will be an item in the array
 

@@ -11,13 +11,13 @@
     "types": [],
     "compounds": [
         {
-            "name": "BifrostFileIO::Filesystem::read_from_filesystem_cached",
+            "name": "BifrostFileIO::Filesystem::read_file_cached",
             "uriImported": "stream:/bifrostGraphShape1",
             "metadata": [
                 {
                     "metaName": "documentation",
                     "metaType": "string",
-                    "metaValue": "../docs/read_from_filesystem_cached.md"
+                    "metaValue": "../docs/read_file_cached.md"
                 },
                 {
                     "metaName": "icon",
@@ -119,7 +119,7 @@
                 {
                     "metaName": "_recentNode_",
                     "metaType": "string",
-                    "metaValue": "BifrostGraph,BifrostFileIO::Filesystem,read_from_filesystem"
+                    "metaValue": "BifrostGraph,BifrostFileIO::Filesystem,read_file"
                 },
                 {
                     "metaName": "_recentNode_",
@@ -1877,8 +1877,8 @@
                     ]
                 },
                 {
-                    "nodeName": "read_from_filesystem",
-                    "nodeType": "BifrostFileIO::Filesystem::read_from_filesystem",
+                    "nodeName": "read_file",
+                    "nodeType": "BifrostFileIO::Filesystem::read_file",
                     "metadata": [
                         {
                             "metaName": "DisplayMode",
@@ -1941,18 +1941,18 @@
                 },
                 {
                     "source": ".debug",
-                    "target": "read_from_filesystem.debug"
+                    "target": "read_file.debug"
                 },
                 {
-                    "source": "read_from_filesystem.success",
+                    "source": "read_file.success",
                     "target": "cache_logic.success"
                 },
                 {
-                    "source": "read_from_filesystem.msg_if_failed",
+                    "source": "read_file.msg_if_failed",
                     "target": "cache_logic.msg_if_failed"
                 },
                 {
-                    "source": "read_from_filesystem.read_lines",
+                    "source": "read_file.read_lines",
                     "target": "cache_logic.read_lines"
                 },
                 {
@@ -1965,11 +1965,11 @@
                 },
                 {
                     "source": ".utf8_only",
-                    "target": "read_from_filesystem.utf8_only"
+                    "target": "read_file.utf8_only"
                 },
                 {
                     "source": ".file_path",
-                    "target": "read_from_filesystem.file_path"
+                    "target": "read_file.file_path"
                 }
             ],
             "values": [

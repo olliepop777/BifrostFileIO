@@ -1,6 +1,6 @@
 #include "filesystem.h"
 
-void BifrostFileIO::Filesystem::read_from_filesystem(Amino::String file_path,
+void BifrostFileIO::Filesystem::read_file(Amino::String file_path,
     bool utf8_only,
     bool debug,
     Amino::MutablePtr<Amino::Array<Amino::String>>& read_lines,

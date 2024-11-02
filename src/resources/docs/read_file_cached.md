@@ -1,6 +1,6 @@
-# `read_from_filesystem_cached`
+# `read_file_cached`
 
-Reads from a file and caches the value to avoid repeated file system reads. See the `read_from_filesystem` node documentation for input, output, and settings  base functionality information. See below for caching specific logic documentation.
+Reads from a file and caches the value to avoid repeated file system reads. See the `read_file` node documentation for input, output, and settings  base functionality information. See below for caching specific logic documentation.
 
 ## Inputs
 
@@ -18,4 +18,4 @@ The frame to read on, if `read_on_frame` is set to true.
 
 ## Outputs
 
-See the `read_from_filesystem` node output documentation.
+See the `read_file` node output documentation.

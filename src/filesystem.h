@@ -11,13 +11,13 @@ namespace BifrostFileIO {
 namespace Filesystem {
 
     BIFROST_FILE_IO_DECL
-    void read_from_filesystem(Amino::String file_path BIFROST_FILE_IO_FILE_BROWSER_OPEN_ALL,
+    void read_file(Amino::String file_path BIFROST_FILE_IO_FILE_BROWSER_OPEN_ALL,
         bool utf8_only BIFROST_FILE_IO_SET_INPUT_DEFAULT_VAL(true),
         bool debug BIFROST_FILE_IO_SET_INPUT_DEFAULT_VAL(false),
         Amino::MutablePtr<Amino::Array<Amino::String>>& read_lines,
         bool& success,
         Amino::String& msg_if_failed)
-        BIFROST_FILE_IO_SET_NODE_METADATA("read_from_filesystem", "json_logo.svg", "false");
+        BIFROST_FILE_IO_SET_NODE_METADATA("read_file", "json_logo.svg", "false");
 
 }
 }
