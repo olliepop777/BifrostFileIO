@@ -51,7 +51,7 @@ Similar to the `get_with_access_expr` node, the `set_with_access_expr` node will
 
 ### Read text files
 
-Any file in the filesystem can be read, but the node is designed for reading text-based files encoded in UTF-8 (or ASCII). The lines of the file will be read into an array of Amino Strings (the native Bifrost string class). Each line from the file will be an item in the array. Set the `utf8_only` port to false if you wish to read all file types, despite if the data doesn't make sense to be interpreted as UTF-8 text (for example, an image file will not produce any meaningful results).
+Any file in the filesystem can be read with the `read_file` node, but the node is designed for reading text-based files encoded in UTF-8 (or ASCII). The lines of the file will be read into an array of Amino Strings (the native Bifrost string class). Each line from the file will be an item in the array. Set the `utf8_only` port to false if you wish to read all file types, despite if the data doesn't make sense to be interpreted as UTF-8 text (for example, an image file will not produce any meaningful results).
 
 ## Building the operator
 You may wish to build the operator for newer/older versions of Maya/Bifrost that are not provided. The goal is to have pre-built releases for the latest Bifrost version, but they may not be ready promptly.
