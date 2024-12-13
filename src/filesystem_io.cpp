@@ -1,6 +1,6 @@
 #include "filesystem_io.h"
 
-void read_file_to_arr_amino_str(const Amino::String amino_file_path,
+void read_file_to_arr_amino_str(const Amino::String& amino_file_path,
     Amino::MutablePtr<Amino::Array<Amino::String>>& read_lines,
     bool utf8_only,
     bool debug,
@@ -114,6 +114,80 @@ bool is_valid_utf8_str(const char* check_str_ptr)
         i++;
     }
     return remaining_bytes == 0;
+};
+
+void write_file_arr_amino_str(const Amino::String& amino_file_path,
+    Amino::Array<Amino::String>& write_lines,
+    bool overwrite,
+    bool dry_run,
+    bool debug,
+    bool& success,
+    Amino::String& msg_if_failed)
+{
+    if (debug) {
+        for (const auto& line : write_lines) {
+            _print_debug_msg(line);
+        }
+    }
+
+    if (amino_file_path.empty()) {
+        success = false;
+        msg_if_failed = "file_path is empty";
+        if (debug) {
+            _print_debug_msg(msg_if_failed);
+        }
+        return;
+    }
+
+    if (debug) {
+        _print_debug_msg("Write file path is: " + amino_file_path);
+    }
+    const bool is_absolute = Bifrost::FileUtils::isAbsolute(amino_file_path);
+    const Amino::String& extracted_file_name = Bifrost::FileUtils::extractFilename(amino_file_path);
+    const Amino::String& directory_path = Bifrost::FileUtils::extractParentPath(amino_file_path);
+    const bool directory_exists = std::filesystem::exists(directory_path.c_str());
+    if (!is_absolute || extracted_file_name.empty() || !directory_exists) {
+        success = false;
+        msg_if_failed = "File path is not an absolute path in an existing directory";
+        if (debug) {
+            _print_debug_msg(msg_if_failed);
+        }
+        return;
+    }
+
+    if (!overwrite && Bifrost::FileUtils::filePathExists(amino_file_path)) {
+        success = false;
+        msg_if_failed = "file_path exists and overwrite is disabled";
+        if (debug) {
+            _print_debug_msg(msg_if_failed);
+        }
+        return;
+    }
+
+    if (dry_run) {
+        if (debug) {
+            _print_debug_msg("Dry run is enabled. Nothing will be written");
+        }
+        return;
+    }
+
+    const char* file_path = amino_file_path.c_str();
+    std::ofstream text_file(file_path);
+
+    if (!text_file) {
+        success = false;
+        msg_if_failed = "There was an unexpected error writing the file: " + amino_file_path;
+        if (debug) {
+            _print_debug_msg(msg_if_failed);
+        }
+        return;
+    }
+
+    for (const auto& line : write_lines) {
+        text_file << line.c_str() << std::endl;
+    }
+
+    text_file.close();
 };
 
 void _print_debug_msg(const Amino::String& debug_msg)

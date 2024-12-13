@@ -8,7 +8,7 @@ import argparse
 # Basic Usage: python3 build.py
 # Help: python3 build.py --help
 
-BIFROST_FILE_IO_VERSION = "1.2.0"
+BIFROST_FILE_IO_VERSION = "1.3.0"
 
 PLATFORM_INFO = {
     "Windows": {

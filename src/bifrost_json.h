@@ -12,7 +12,7 @@ namespace BifrostFileIO {
 namespace JSON {
 
     BIFROST_FILE_IO_DECL
-    void read_json(Amino::String json_file BIFROST_FILE_IO_FILE_BROWSER_OPEN("JSON (*.json)"),
+    void read_json(Amino::String json_file BIFROST_FILE_IO_FILE_BROWSER("JSON (*.json)", "open"),
         Amino::String json_str,
         bool output_a_bifrost_object BIFROST_FILE_IO_SET_INPUT_DEFAULT_VAL(true),
         bool output_a_json_str BIFROST_FILE_IO_SET_INPUT_DEFAULT_VAL(false),
