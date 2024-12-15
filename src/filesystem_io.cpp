@@ -133,9 +133,6 @@ void write_file_arr_amino_str(const Amino::String& amino_file_path,
     if (amino_file_path.empty()) {
         success = false;
         msg_if_failed = "file_path is empty";
-        if (debug) {
-            _print_debug_msg(msg_if_failed);
-        }
         return;
     }
 
