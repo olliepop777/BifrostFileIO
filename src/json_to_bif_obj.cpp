@@ -61,17 +61,17 @@ void set_primitive_key_value(json::iterator& iter,
 {
     switch (iter->type()) {
     case json::value_t::boolean:
-        bif_obj->setProperty(amino_key, get_iter_val<bool>(iter, settings));
+        bif_obj->setProperty(amino_key, get_iter_val<Amino::bool_t>(iter, settings));
         break;
     case json::value_t::string:
         bif_obj->setProperty(amino_key, get_iter_val<Amino::String>(iter, settings));
         break;
     case json::value_t::number_integer:
     case json::value_t::number_unsigned:
-        bif_obj->setProperty(amino_key, get_iter_val<std::int64_t>(iter, settings));
+        bif_obj->setProperty(amino_key, get_iter_val<Amino::long_t>(iter, settings));
         break;
     case json::value_t::number_float:
-        bif_obj->setProperty(amino_key, get_iter_val<double>(iter, settings));
+        bif_obj->setProperty(amino_key, get_iter_val<Amino::double_t>(iter, settings));
         break;
     case json::value_t::null:
         if (settings.null_to_string) {
@@ -99,10 +99,10 @@ Amino::Any get_base_arr_any_value(json::iterator& iter, ReadSettings& settings)
         break;
     case json::value_t::number_integer:
     case json::value_t::number_unsigned:
-        return_val = get_iter_val<std::int64_t>(iter, settings);
+        return_val = get_iter_val<Amino::long_t>(iter, settings);
         break;
     case json::value_t::number_float:
-        return_val = get_iter_val<double>(iter, settings);
+        return_val = get_iter_val<Amino::double_t>(iter, settings);
         break;
     case json::value_t::null:
         if (settings.null_to_string) {
@@ -217,7 +217,7 @@ void handle_homogenous_nested_array_limited_depth(
 {
     switch (array_type_info.json_type) {
     case json::value_t::boolean:
-        handle_homogenous_nested_array_set_value<depth, bool>(
+        handle_homogenous_nested_array_set_value<depth, Amino::bool_t>(
             json_data, bif_obj, amino_key, json_size, settings);
         break;
     case json::value_t::string:
@@ -226,11 +226,11 @@ void handle_homogenous_nested_array_limited_depth(
         break;
     case json::value_t::number_integer:
     case json::value_t::number_unsigned:
-        handle_homogenous_nested_array_set_value<depth, std::int64_t>(
+        handle_homogenous_nested_array_set_value<depth, Amino::long_t>(
             json_data, bif_obj, amino_key, json_size, settings);
         break;
     case json::value_t::number_float:
-        handle_homogenous_nested_array_set_value<depth, double>(
+        handle_homogenous_nested_array_set_value<depth, Amino::double_t>(
             json_data, bif_obj, amino_key, json_size, settings);
         break;
     case json::value_t::null:
@@ -238,7 +238,7 @@ void handle_homogenous_nested_array_limited_depth(
             handle_homogenous_nested_array_set_value<depth, Amino::String>(
                 json_data, bif_obj, amino_key, json_size, settings);
         } else {
-            handle_homogenous_nested_array_set_value<depth, bool>(
+            handle_homogenous_nested_array_set_value<depth, Amino::bool_t>(
                 json_data, bif_obj, amino_key, json_size, settings);
         }
         break;
@@ -272,6 +272,16 @@ bool is_equivalent_number_type(json::value_t first_type, json::value_t cur_type)
     return (first_is_floating && second_is_integer) || (first_is_integer && second_is_floating);
 }
 
+bool is_equivalent_integer_type(json::value_t first_type, json::value_t cur_type)
+{
+    bool first_is_signed = first_type == json::value_t::number_integer;
+    bool second_is_signed = cur_type == json::value_t::number_integer;
+    bool first_is_unsigned = first_type == json::value_t::number_unsigned;
+    bool second_is_unsigned = cur_type == json::value_t::number_unsigned;
+
+    return (first_is_signed && second_is_unsigned) || (first_is_unsigned && second_is_signed);
+}
+
 std::size_t get_array_type_info(json& json_data,
     ArrayTypeInfo& array_type_info)
 {
@@ -300,6 +310,8 @@ std::size_t get_array_type_info(json& json_data,
             if (is_equivalent_number_type(first_type, iter->type())) {
                 // If they are mixed then force everything to a floating point type
                 first_type = ArrayTypeInfo::DEFAULT_ARRAY_TYPE;
+            } else if (is_equivalent_integer_type(first_type, iter->type())) {
+                first_type = json::value_t::number_integer;
             } else {
                 array_type_info.is_homogenous = false;
             }
