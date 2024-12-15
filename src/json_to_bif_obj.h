@@ -12,6 +12,7 @@ using json = nlohmann::json;
 
 // Bifrost includes
 #include <Amino/Core/Array.h>
+#include <Amino/Core/BuiltInTypes.h>
 #include <Amino/Core/Ptr.h>
 #include <Amino/Core/String.h>
 #include <Bifrost/Object/Object.h>
@@ -124,6 +125,11 @@ void handle_non_homogenous_array(json& json_data,
 // different number types. That is, if one type is json::value_t::number_float
 // and the other is (json::value_t::number_integer OR json::value_t::number_unsigned)
 bool is_equivalent_number_type(json::value_t first_type, json::value_t cur_type);
+
+// The two types of json::value_t::number_integer OR json::value_t::number_unsigned
+// should be treated as equal.This will return true if and only if the types are both integers AND
+// one is signed and the other is not.
+bool is_equivalent_integer_type(json::value_t first_type, json::value_t cur_type);
 
 // Traverse once to get all the info we need
 std::size_t get_array_type_info(json& json_data,
