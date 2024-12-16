@@ -28,8 +28,6 @@ struct AccessExpr {
     static bool is_closing_char(char cur_char);
 };
 
-std::string strip_whitespace(Amino::String amino_str);
-
 void set_arr_index_accessor(Amino::MutablePtr<Bifrost::Object>& bif_obj,
     std::string& cur_token,
     const Amino::String& access_key, bool& success,

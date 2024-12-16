@@ -27,7 +27,7 @@ namespace JSON {
         BIFROST_FILE_IO_SET_NODE_METADATA("read_json", "json_logo.svg", "false");
 
     BIFROST_FILE_IO_DECL
-    void get_property_access_tokens(Amino::String access_expr,
+    void get_property_access_tokens(const Amino::String& access_expr,
         Amino::MutablePtr<Amino::Array<Amino::Ptr<Bifrost::Object>>>& token_arr,
         bool& success,
         Amino::String& msg_if_failed)

@@ -77,13 +77,13 @@ void BifrostFileIO::JSON::read_json(Amino::String json_file,
     }
 }
 
-void BifrostFileIO::JSON::get_property_access_tokens(Amino::String access_expr,
+void BifrostFileIO::JSON::get_property_access_tokens(const Amino::String& access_expr,
     Amino::MutablePtr<Amino::Array<Amino::Ptr<Bifrost::Object>>>& token_arr,
     bool& success,
     Amino::String& msg_if_failed)
 {
 
-    std::string access_expr_str = strip_whitespace(access_expr);
+    std::string access_expr_str = std::string(access_expr.c_str());
 
     // Will be overwritten if there is an error
     success = true;

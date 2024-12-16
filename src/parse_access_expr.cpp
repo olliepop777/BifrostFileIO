@@ -29,20 +29,6 @@ bool AccessExpr::is_closing_char(char cur_char)
     }
 }
 
-std::string strip_whitespace(Amino::String amino_str)
-{
-    std::string str = std::string(amino_str.c_str());
-    const char whitespace = ' ';
-    for (auto iter = str.begin(); iter != str.end();) {
-        if ((*iter) == whitespace) {
-            iter = str.erase(iter);
-        } else {
-            ++iter;
-        }
-    }
-    return str;
-}
-
 void set_arr_index_accessor(Amino::MutablePtr<Bifrost::Object>& bif_obj,
     std::string& cur_token,
     const Amino::String& access_key, bool& success,
@@ -102,6 +88,9 @@ void parse_expression(
     bool is_opened = false;
     bool saw_escape_char = false;
     for (char cur_char : access_expr) {
+        if (cur_char == ' ' && !is_opened) {
+            continue;
+        }
         is_opening_char = AccessExpr::is_opening_char(cur_char);
         is_closing_char = AccessExpr::is_closing_char(cur_char);
         is_escape_char = (cur_char == AccessExpr::ESCAPE);
