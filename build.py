@@ -76,7 +76,7 @@ def get_bifrost_install_path(platform_name):
 
     return os.path.join(maya_version_path, max_bifrost_version, "bifrost")
 
-def build_with_cmake(bifrost_install_path, platform_name, is_release, is_fresh_build):
+def build_with_cmake(bifrost_install_path, platform_name, is_release, is_fresh_build, is_verbose, is_dry_run):
     build_args = [
         "cmake", "-S", ".",
         "-B", CMAKE_BUILD_DIR,
@@ -110,15 +110,21 @@ def build_with_cmake(bifrost_install_path, platform_name, is_release, is_fresh_b
     if is_release or is_fresh_build:
         remove_old_build_dirs(release_name)
 
-    subprocess.check_call(build_args)
+    if is_verbose:
+        print(f"CMAKE build setup cmd: {(" ".join(build_args))}")
+    if not is_dry_run:
+        subprocess.check_call(build_args)
+
     # Build the operator
-    subprocess.check_call(
-        [
-            "cmake", "--build", CMAKE_BUILD_DIR,
-            "--config", "Release",
-            "--target", "install"
-        ]
-    )
+    build_cmd = [
+        "cmake", "--build", CMAKE_BUILD_DIR,
+        "--config", "Release",
+        "--target", "install"
+    ]
+    if is_verbose:
+        print(f"CMAKE build cmd: {" ".join(build_cmd)}")
+    if not is_dry_run:
+        subprocess.check_call(build_cmd)
 
 def check_deprecated_cmake_args(bif_install_version):
     # The min version will be first if it's compatible, needed for comparing strings
@@ -229,6 +235,8 @@ def main(args):
     is_release = args.release
     bifrost_install_path = args.bifrost_path
     is_fresh_build = args.fresh_build
+    is_verbose = args.verbose
+    is_dry_run = args.dry_run
 
     check_cmake_exists()
     platform_name = platform.system()
@@ -238,13 +246,15 @@ def main(args):
     else:
         build_script_print("Passed Bifrost install path: {}".format(bifrost_install_path))
 
-    build_with_cmake(bifrost_install_path, platform_name, is_release, is_fresh_build)
+    build_with_cmake(bifrost_install_path, platform_name, is_release, is_fresh_build, is_verbose, is_dry_run)
 
 def setup_args():
     parser = argparse.ArgumentParser(description="Build the BifrostFileIO operators and helpers")
     parser.add_argument("-r", "--release", action="store_true", help="If specified, builds for public release")
     parser.add_argument("-bp", "--bifrost-path", help="Specify an alternate path for the Bifrost install")
     parser.add_argument("-f", "--fresh-build", action="store_true", help="Remove old build directories if they exist")
+    parser.add_argument("-v", "--verbose", action="store_true", help="Print extra build related stuff, like the raw build commands")
+    parser.add_argument("-n", "--dry-run", action="store_true", help="Do everything except run the final build commands. For testing")
     args = parser.parse_args()
     return args
 
